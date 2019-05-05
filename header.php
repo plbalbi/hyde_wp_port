@@ -22,6 +22,7 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
+	<!--
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'palbisblog' ); ?></a>
 
 	<header id="masthead" class="site-header">
@@ -42,7 +43,7 @@
 				?>
 				<p class="site-description"><?php echo $palbisblog_description; /* WPCS: xss ok. */ ?></p>
 			<?php endif; ?>
-		</div><!-- .site-branding -->
+		</div>
 
 		<nav id="site-navigation" class="main-navigation">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'palbisblog' ); ?></button>
@@ -52,7 +53,8 @@
 				'menu_id'        => 'primary-menu',
 			) );
 			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+		</nav>
+	</header>
+	-->
 
-	<div id="content" class="site-content">
+	<div id="content" class="site-content content container">

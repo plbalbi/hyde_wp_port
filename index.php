@@ -15,12 +15,11 @@
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
-
 		<?php
-		if ( have_posts() ) :
+		if ( have_posts() ) : ?>
 
+			<div class="posts">
+			<?
 			if ( is_home() && ! is_front_page() ) :
 				?>
 				<header>
@@ -50,10 +49,12 @@ get_header();
 
 		endif;
 		?>
+		</div>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+		<?php
+		// get_footer(); 
+		?>
 
-<?php
-get_sidebar();
-get_footer();
+<?php 
+	get_sidebar(); 
+	get_footer();

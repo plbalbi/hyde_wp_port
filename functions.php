@@ -42,6 +42,9 @@ if ( ! function_exists( 'palbisblog_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
+		// Add theme support for selective refresh for widgets.
+		add_theme_support( 'customize-selective-refresh-widgets' );
+
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'palbisblog' ),
@@ -105,12 +108,12 @@ add_action( 'after_setup_theme', 'palbisblog_content_width', 0 );
  */
 function palbisblog_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'palbisblog' ),
+		'name'          => __( 'Sidebar', 'palbisblog' ),
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'palbisblog' ),
+		'description'   => __( 'Add widgets here to appear in your sidebar.', 'palbisblog' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
+		'before_title'  => '<h2 class="sidebar-nav-item">',
 		'after_title'   => '</h2>',
 	) );
 }
@@ -120,11 +123,19 @@ add_action( 'widgets_init', 'palbisblog_widgets_init' );
  * Enqueue scripts and styles.
  */
 function palbisblog_scripts() {
+	wp_enqueue_style( 'poole', get_template_directory_uri() . '/poole.css' );
+	wp_enqueue_style( 'hyde', get_template_directory_uri() . '/hyde.css' );
+
+	/*
+
+	Original starter theme stylesheet
 	wp_enqueue_style( 'palbisblog-style', get_stylesheet_uri() );
 
+	Some scripts
 	wp_enqueue_script( 'palbisblog-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
 	wp_enqueue_script( 'palbisblog-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	
+	*/
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -158,4 +169,13 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+/**
+ * Remove admin login header
+ */
+function remove_admin_login_header() {
+    remove_action('wp_head', '_admin_bar_bump_cb');
+}
+add_action('get_header', 'remove_admin_login_header');
+
 
