@@ -23,7 +23,6 @@
 			<span class="post-date">
 				<?php
 				palbisblog_posted_on();
-				// palbisblog_posted_by();
 				?>
 			</span><!-- .entry-meta -->
 		<?php endif; ?>
