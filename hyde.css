@@ -104,17 +104,21 @@ html {
     margin-bottom: 1rem;
 }
 
-.sidebar-nav-item {
+ul.sidebar-nav-items li {
     display: block;
     line-height: 1.75;
 }
 
-a.sidebar-nav-item:hover,
-a.sidebar-nav-item:focus {
+ul.sidebar-nav-items li {
+    list-style-type: none;
+}
+
+ul.sidebar-nav-items li a:hover,
+ul.sidebar-nav-items li a:focus {
     text-decoration: underline;
 }
 
-.sidebar-nav-item.active {
+ul.sidebar-nav-items li a.active {
     font-weight: bold;
 }
 

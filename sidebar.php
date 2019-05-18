@@ -7,9 +7,10 @@
  * @package palbisblog
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-	return;
-}
+// Always show sidebar, despite having or not widgets
+// if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+// 	return;
+// }
 ?>
 
 <aside id="secondary" class="widget-area">
@@ -26,6 +27,15 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
                 <p class="lead site-description"><?php echo $description; ?></p>
             <?php endif; ?>
           </div>
+
+					<?php
+						wp_nav_menu(array(
+							"theme_location" => "sidebar_menu",
+							"container" => "nav",
+							"container_class" => "sidebar-nav",
+							"menu_class" => "sidebar-nav-items"
+						));
+					?>
           <!--
           <nav class="sidebar-nav">
             <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}">Home</a>

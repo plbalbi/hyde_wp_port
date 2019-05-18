@@ -45,10 +45,10 @@ if ( ! function_exists( 'palbisblog_setup' ) ) :
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
-		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'palbisblog' ),
-		) );
+		// Registering all menus used in theme
+		register_nav_menus(array(
+			"sidebar_menu" => "Main sidebar menu"
+		));
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
@@ -134,7 +134,7 @@ function palbisblog_scripts() {
 	Some scripts
 	wp_enqueue_script( 'palbisblog-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 	wp_enqueue_script( 'palbisblog-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-	
+
 	*/
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -177,5 +177,3 @@ function remove_admin_login_header() {
     remove_action('wp_head', '_admin_bar_bump_cb');
 }
 add_action('get_header', 'remove_admin_login_header');
-
-
