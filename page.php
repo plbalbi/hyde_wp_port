@@ -16,9 +16,7 @@ get_header();
 get_sidebar();
 ?>
 
-	<div id="primary" class="content container">
 		<main id="main" class="site-main">
-
 		<?php
 		while ( have_posts() ) :
 			the_post();
@@ -32,9 +30,7 @@ get_sidebar();
 
 		endwhile; // End of the loop.
 		?>
-
 		</main><!-- #main -->
-	</div><!-- #primary -->
 
 <?php
 get_footer();
