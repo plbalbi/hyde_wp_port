@@ -20,7 +20,7 @@ get_sidebar();
 		if ( have_posts() ) : ?>
 
 			<div class="posts">
-			<?
+			<?php
 			if ( is_home() && ! is_front_page() ) :
 				?>
 				<header>
