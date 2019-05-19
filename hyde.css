@@ -296,3 +296,7 @@ ul.sidebar-nav-items li a.active {
 .theme-base-0f .related-posts li a:hover {
     color: #8f5536;
 }
+
+.site-info {
+    text-align: center;
+}
