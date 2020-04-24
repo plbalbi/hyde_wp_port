@@ -128,6 +128,7 @@ add_action( 'widgets_init', 'palbisblog_widgets_init' );
 function palbisblog_scripts() {
 	wp_enqueue_style( 'poole', get_template_directory_uri() . '/poole.css' );
 	wp_enqueue_style( 'hyde', get_template_directory_uri() . '/hyde.css' );
+	wp_enqueue_style( 'hyde', get_template_directory_uri() . '/palbi.css' );
 
 	/*
 

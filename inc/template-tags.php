@@ -7,6 +7,23 @@
  * @package palbisblog
  */
 
+/**
+ * Prints HTML with meta information for the current post-date/time, in a MONTH, YEAR format.
+ * Used for the index, to display all posts.
+ */
+function posted_on_index() {
+	$posted_on_index_date_format = "M, Y";
+	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
+	}
+	$time_string = sprintf( $time_string,
+		esc_attr( get_the_date( DATE_W3C ) ),
+		esc_html( get_the_date($posted_on_index_date_format) )
+	);
+	echo '<span class="posted-on">' . $time_string . '</span>'; // WPCS: XSS OK.
+}
+
 if ( ! function_exists( 'palbisblog_posted_on' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time.
@@ -26,7 +43,7 @@ if ( ! function_exists( 'palbisblog_posted_on' ) ) :
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
 			esc_html_x( 'Posted on %s', 'post date', 'palbisblog' ),
-			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+			$time_string
 		);
 
 		echo '<span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
