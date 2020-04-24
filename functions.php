@@ -7,6 +7,9 @@
  * @package palbisblog
  */
 
+# Require utils file just once
+require_once 'inc/utils.php';
+
 if ( ! function_exists( 'palbisblog_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.

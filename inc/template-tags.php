@@ -59,7 +59,7 @@ if ( ! function_exists( 'palbisblog_entry_footer' ) ) :
 		if ( 'post' === get_post_type() ) {
 			/* translators: used between list items, there is a space after the comma */
 			$categories_list = get_the_category_list( esc_html__( ', ', 'palbisblog' ) );
-			if ( $categories_list ) {
+			if ( $categories_list && !string_contains($categories_list, "Uncategorized") ) {
 				/* translators: 1: list of categories. */
 				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'palbisblog' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 			}
